@@ -1,9 +1,11 @@
+import HomePageCarousel from "../components/HomePageCarousel";
+
 function Home() {
   return (
-  <div>
-    Home
-  </div>)
-  ;
+    <div>
+      <HomePageCarousel />
+      Home
+    </div>
+  );
 }
-
 export default Home;

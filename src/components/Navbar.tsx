@@ -6,7 +6,7 @@ import logoDark from "../assets/logoDark.svg";
 function Navbar() {
   return (
     <div className="navbar bg-[#333545] ">
-      <div className="flex-1 ml-4">
+      <div className="flex-1 ml-8">
         <div className="h-12 mr-8">
           <img className="h-[100%] w-36" src={logoDark} />
         </div>
@@ -22,7 +22,7 @@ function Navbar() {
           </div>
         </div>
       </div>
-      <div className="flex-none gap-2 mr-4">
+      <div className="flex-none gap-2 mr-8">
         <div className="dropdown dropdown-end">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
@@ -34,10 +34,7 @@ function Navbar() {
             className="mt-3 z-[1] p-2 shadow menu menu-sm text-white dropdown-content bg-[#333545] rounded-box w-52"
           >
             <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
+              <a className="justify-between">Profile</a>
             </li>
             <li>
               <a>Settings</a>
