@@ -13,7 +13,7 @@ function Home() {
         <p className="text-[24px] font-roboto antialiased font-bold mt-5 mb-2 leading-[28.08px]">
           Recommended Movies
         </p>
-        <div className="mt-2 flex items-center gap-16 space justify-between">
+        <div className="mt-2 flex flex-col lg:flex-row items-center gap-16 space justify-between">
           <MovieCard movieImage={MoviePoster} />
           <MovieCard movieImage={MoviePoster} />
           <MovieCard movieImage={MoviePoster} />
