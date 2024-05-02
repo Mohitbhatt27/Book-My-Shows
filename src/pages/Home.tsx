@@ -2,9 +2,7 @@ import { useEffect, useState } from "react";
 
 import Banner from "../assets/Banner.avif";
 import HomeBanner from "../components/HomeBanner";
-import HomeFooter from "../components/HomeFooter";
 import HomePageCarousel from "../components/HomePageCarousel";
-import ShowTimingcard from "../components/ShowTimingCard";
 import { AxiosInstance } from "../config/AxiosInstance";
 import HomeLayout from "../layouts/HomeLayout";
 import MovieType from "../types/Movie";
@@ -47,10 +45,6 @@ function Home() {
         <MovieCarousel movies={moviePoster} />
       </div>
       <HomeBanner image={Banner} />
-      <HomeFooter />
-      <div className="mt-20 mb-20 flex justify-center">
-        <ShowTimingcard />
-      </div>
     </HomeLayout>
   );
 }

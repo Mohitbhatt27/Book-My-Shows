@@ -1,14 +1,19 @@
 import { IoSearch } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 import defaultpic from "../assets/defaultpic.avif";
 import logoDark from "../assets/logoDark.svg";
 
 function Navbar() {
+  const navigate = useNavigate();
   return (
     <div className="w-full bg-[#333545] mb-5">
       <div className="navbar w-[80vw] mx-auto ">
         <div className="flex-1 ml-4">
-          <div className="h-12 mr-4">
+          <div
+            className="h-12 mr-4 hover:cursor-pointer"
+            onClick={() => navigate("/")}
+          >
             <img className="h-[100%] w-36" src={logoDark} />
           </div>
 
