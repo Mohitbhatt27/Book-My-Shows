@@ -4,6 +4,7 @@ import Banner from "../assets/Banner.avif";
 import HomeBanner from "../components/HomeBanner";
 import HomeFooter from "../components/HomeFooter";
 import HomePageCarousel from "../components/HomePageCarousel";
+import ShowTimingcard from "../components/ShowTimingCard";
 import { AxiosInstance } from "../config/AxiosInstance";
 import MovieType from "../types/Movie";
 import MovieCarousel from "../utils/MovieCarousel";
@@ -46,6 +47,9 @@ function Home() {
       </div>
       <HomeBanner image={Banner} />
       <HomeFooter />
+      <div className="mt-20 mb-20 flex justify-center">
+        <ShowTimingcard />
+      </div>
     </div>
   );
 }
