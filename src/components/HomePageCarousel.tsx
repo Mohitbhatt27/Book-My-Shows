@@ -1,65 +1,50 @@
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
-
-import SwiperCore from "swiper";
-import { Autoplay, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Slider from "react-slick";
 
 import CarouselImage1 from "../assets/c1.avif";
 import CarouselImage2 from "../assets/c2.avif";
 import CarouselImage3 from "../assets/c3.avif";
 import CarouselImage4 from "../assets/c4.avif";
 
-SwiperCore.use([Navigation, Pagination, Autoplay]);
-
-const MyCarousel = () => {
+function MyCarousel() {
+  const settings = {
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "80px",
+    slidesToShow: 1,
+    speed: 500,
+    dots: true,
+  };
   return (
-    <Swiper
-      spaceBetween={20}
-      slidesPerView={1}
-      navigation
-      pagination={{ clickable: true }}
-      className="w-full mt-2"
-      autoplay={{
-        delay: 1900,
-        disableOnInteraction: false,
-      }}
-    >
-      <SwiperSlide>
-        <img
-          src={CarouselImage1}
-          alt="Slide 1"
-          className="object-cover"
-          style={{ width: "100%" }}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img
-          src={CarouselImage2}
-          alt="Slide 2"
-          className="object-cover"
-          style={{ width: "100%" }}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img
-          src={CarouselImage3}
-          alt="Slide 3"
-          className="object-cover"
-          style={{ width: "100%" }}
-        />
-      </SwiperSlide>
-      <SwiperSlide>
-        <img
-          src={CarouselImage4}
-          alt="Slide 4"
-          className="object-cover"
-          style={{ width: "100%" }}
-        />
-      </SwiperSlide>
-    </Swiper>
+    <div className="slider-container">
+      <Slider {...settings}>
+        <div className="focus:bg-none">
+          <img
+            src={CarouselImage1}
+            style={{ width: "100%", borderRadius: "30px", padding: "5px" }}
+          />
+        </div>
+        <div className="focus:bg-none">
+          <img
+            src={CarouselImage2}
+            style={{ width: "100%", borderRadius: "30px", padding: "5px" }}
+          />
+        </div>
+        <div className="focus:bg-none">
+          <img
+            src={CarouselImage3}
+            style={{ width: "100%", borderRadius: "30px", padding: "5px" }}
+          />
+        </div>
+        <div className="focus:bg-none">
+          <img
+            src={CarouselImage4}
+            style={{ width: "100%", borderRadius: "30px", padding: "5px" }}
+          />
+        </div>
+      </Slider>
+    </div>
   );
-};
+}
 
 export default MyCarousel;
