@@ -3,7 +3,7 @@ import HomeLayout from "../layouts/HomeLayout";
 function MovieListings() {
   return (
     <HomeLayout>
-      <div className="min-h-[80-vh] bg-slate-300">
+      <div className="min-h-[80-vh] bg-[#F2F2F2]">
         <div className="bg-[#333545] text-white">
           <div className="font-light text-7xl pt-8 pb-6 w-[80vw] mx-auto">
             12th Fail
@@ -20,8 +20,8 @@ function MovieListings() {
 
         {/* Theatre listing */}
 
-        <div className="bg-slate-300 mt-4 w-[100vw]">
-          <div className="w-[80vw] mx-auto rounded-xl bg-[#FFFFFF]">
+        <div className="bg-[#F2F2F2] mt-4 w-[100vw]">
+          <div className="w-[80vw] mx-auto bg-[#FFFFFF]">
             <TheatreShowCard num={8} />
             <TheatreShowCard num={7} />
             <TheatreShowCard num={14} />
