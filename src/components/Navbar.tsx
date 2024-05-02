@@ -48,6 +48,17 @@ function Navbar() {
           </div>
         </div>
       </div>
+      <div className="text-white bg-[#22232d]">
+        <div className="flex gap-4 w-[80vw] ml-[11rem] py-2 ">
+          <div className="cursor-pointer">Movies</div>
+          <div className="cursor-pointer">Events</div>
+          <div className="cursor-pointer">Stream</div>
+          <div className="cursor-pointer">Plays</div>
+          <div className="cursor-pointer">Sports</div>
+          <div className="cursor-pointer">Activities</div>
+          <div className="cursor-pointer">Discover</div>
+        </div>
+      </div>
     </div>
   );
 }

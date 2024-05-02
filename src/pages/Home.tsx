@@ -6,6 +6,7 @@ import HomeFooter from "../components/HomeFooter";
 import HomePageCarousel from "../components/HomePageCarousel";
 import ShowTimingcard from "../components/ShowTimingCard";
 import { AxiosInstance } from "../config/AxiosInstance";
+import HomeLayout from "../layouts/HomeLayout";
 import MovieType from "../types/Movie";
 import MovieCarousel from "../utils/MovieCarousel";
 
@@ -36,7 +37,7 @@ function Home() {
     fetchMovie();
   }, []);
   return (
-    <div>
+    <HomeLayout>
       <HomePageCarousel />
       <div className="flex flex-col w-[90vw] mx-auto">
         <p className="text-[24px] font-roboto antialiased font-bold mt-5 mb-4 leading-[28.08px]">
@@ -50,7 +51,7 @@ function Home() {
       <div className="mt-20 mb-20 flex justify-center">
         <ShowTimingcard />
       </div>
-    </div>
+    </HomeLayout>
   );
 }
 export default Home;
