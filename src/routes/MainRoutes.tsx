@@ -7,7 +7,6 @@ function MainRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
-
       <Route path="/movie/listing" element={<MovieListings />}></Route>
     </Routes>
   );
