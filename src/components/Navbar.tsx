@@ -8,7 +8,7 @@ import { logout } from "../redux/AuthSlice";
 
 function Navbar() {
   const navigate = useNavigate();
-  const { isSignedIn } = useAppSelector((state) => state.auth);
+  const { isSignedIn, role } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
   return (
@@ -69,7 +69,13 @@ function Navbar() {
                 <a className="justify-between">Profile</a>
               </li>
               <li>
-                <a>Settings</a>
+                
+                {role === "ADMIN" ? (
+                  <a onClick={() => navigate("/addmovie")}>Add Movie</a>
+                ) : (
+                  <a>Settings</a>
+                )}
+                
               </li>
               <li>
                 {isSignedIn ? (

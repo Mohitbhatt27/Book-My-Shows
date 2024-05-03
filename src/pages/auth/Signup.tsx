@@ -5,16 +5,8 @@ import { useAppDispatch } from "../../hooks/hooks";
 import HomeLayout from "../../layouts/HomeLayout";
 import { signupSlice } from "../../redux/AuthSlice";
 
-interface SignupFormProps {
-  onSubmit: (formData: {
-    name: string;
-    email: string;
-    password: string;
-    userType: string;
-  }) => void;
-}
 
-const SignupForm: React.FC<SignupFormProps> = () => {
+const SignupForm: React.FC = () => {
   const [signupDetails, setSignupDetails] = useState({
     name: "",
     email: "",
