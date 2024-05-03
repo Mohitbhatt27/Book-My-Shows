@@ -3,9 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import defaultpic from "../assets/defaultpic.avif";
 import logoDark from "../assets/logoDark.svg";
+import { useAppDispatch, useAppSelector } from "../hooks/hooks";
+import { logout } from "../redux/AuthSlice";
 
 function Navbar() {
   const navigate = useNavigate();
+  const { isSignedIn } = useAppSelector((state) => state.auth);
+  const dispatch = useAppDispatch();
+
   return (
     <div className="w-full bg-[#333545] mb-5">
       <div className="navbar w-[80vw] mx-auto ">
@@ -29,7 +34,27 @@ function Navbar() {
             </div>
           </div>
         </div>
-        <div className="flex-none gap-2 mr-8">
+        <div className="flex-none gap-2 mr-8 font-roboto h-8">
+          {!isSignedIn ? (
+            <div>
+              <button
+                className="btn bg-[#F84464] border-none font-semibold text-white w-24 hover:bg-[#F84464]"
+                onClick={() => navigate("/signin")}
+              >
+                Sign In
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button
+                className="btn bg-[#F84464] border-none font-semibold text-white w-24 hover:bg-[#F84464]"
+                onClick={() => dispatch(logout())}
+              >
+                Logout
+              </button>
+            </div>
+          )}
+
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -47,7 +72,11 @@ function Navbar() {
                 <a>Settings</a>
               </li>
               <li>
-                <a>Logout</a>
+                {isSignedIn ? (
+                  <a onClick={() => dispatch(logout())}>Logout</a>
+                ) : (
+                  <a onClick={() => navigate("/signup")}>Sign Up</a>
+                )}
               </li>
             </ul>
           </div>
