@@ -33,7 +33,7 @@ function AddNewMovie() {
   const onSubmit = (data: MovieData) => {
     const movieData = {
       ...data,
-      casts: data.casts.split(",").map((cast) => cast.trim()), // Convert to array and trim whitespace
+      casts: data.casts.split(",").map((cast) => cast.trim()), 
     };
     console.log("Form Submitted", data);
     setSubmitStatus("Movie submitted successfully!");

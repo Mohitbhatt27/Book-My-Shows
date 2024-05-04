@@ -60,7 +60,6 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      console.log("am i here");
       localStorage.clear();
       state.email = "";
       state.role = "";

@@ -11,6 +11,11 @@ function Navbar() {
   const { isSignedIn, role } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
 
+  function handleLogout() {
+    dispatch(logout());
+    navigate("/");
+  }
+
   return (
     <div className="w-full bg-[#333545] mb-5">
       <div className="navbar w-[80vw] mx-auto ">
@@ -48,7 +53,7 @@ function Navbar() {
             <div>
               <button
                 className="btn bg-[#F84464] border-none font-semibold text-white w-24 hover:bg-[#F84464]"
-                onClick={() => dispatch(logout())}
+                onClick={handleLogout}
               >
                 Logout
               </button>
@@ -65,17 +70,33 @@ function Navbar() {
               tabIndex={0}
               className="mt-3 z-[1] p-2 shadow menu menu-sm text-white dropdown-content bg-[#333545] rounded-box w-52"
             >
+              {role === "ADMIN" || role === "CLIENT" ? (
+                <li>
+                  <a
+                    onClick={() => navigate("/addtheatre")}
+                    className="justify-between"
+                  >
+                    Add theatre
+                  </a>
+                </li>
+              ) : (
+                <li>
+                  <a className="justify-between">Profile</a>
+                </li>
+              )}
+
+              {(role === "ADMIN" || role === "CLIENT") && (
+                <li>
+                  <a onClick={() => navigate("/addshows")}>Add shows</a>
+                </li>
+              )}
+
               <li>
-                <a className="justify-between">Profile</a>
-              </li>
-              <li>
-                
-                {role === "ADMIN" ? (
+                {role === "ADMIN" || role === "CLIENT" ? (
                   <a onClick={() => navigate("/addmovie")}>Add Movie</a>
                 ) : (
                   <a>Settings</a>
                 )}
-                
               </li>
               <li>
                 {isSignedIn ? (
