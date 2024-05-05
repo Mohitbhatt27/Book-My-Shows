@@ -1,4 +1,5 @@
 import { AiFillStar } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
 type HomeMovieCardProps = {
   movieImage: string;
@@ -6,6 +7,7 @@ type HomeMovieCardProps = {
   genre: string;
   rating: string;
   voteCount: string;
+  id: string;
 };
 
 function MovieCard({
@@ -14,9 +16,18 @@ function MovieCard({
   genre,
   rating,
   voteCount,
+  id,
 }: HomeMovieCardProps) {
+  const navigate = useNavigate();
+  function handleOnClick() {
+    navigate(`/about/${id}`);
+  }
+
   return (
-    <div className="flex flex-col items-center justify-center h-[416px] w-[222px] mb-4">
+    <div
+      className="flex flex-col items-center justify-center h-[416px] w-[222px] mb-4 hover:cursor-pointer"
+      onClick={handleOnClick}
+    >
       <img
         src={movieImage}
         className="h-[95%] w-full rounded-tl-lg rounded-tr-lg"

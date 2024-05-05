@@ -30,6 +30,18 @@ export const getAllMovies = createAsyncThunk("movies/getAll", async () => {
   }
 });
 
+export const getMovieById = createAsyncThunk(
+  "movies/getById",
+  async (id: string|undefined) => {
+    try {
+      const response = AxiosInstance.get(`/mba/api/v1/movies/${id}`);
+      return await response;
+    } catch (error) {
+      console.error("Error in getting movie by id", error);
+    }
+  }
+);
+
 const initialState = {
   isLoading: false,
   error: null,

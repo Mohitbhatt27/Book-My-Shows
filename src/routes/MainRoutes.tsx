@@ -1,5 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 
+import AboutMovie from "../pages/AboutMovie";
 import AddNewMovie from "../pages/AddNewMovie";
 import AddNewShows from "../pages/AddNewShows";
 import AddNewTheatre from "../pages/AddNewTheatre";
@@ -14,9 +15,13 @@ function MainRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />}></Route>
+
       <Route path="/movie/listing" element={<MovieListings />}></Route>
+      <Route path="/about/:id" element={<AboutMovie />}></Route>
+
       <Route path="/signup" element={<SignupForm />}></Route>
       <Route path="/signin" element={<SigninForm />}></Route>
+
       <Route element={<AuthRoutes allowListedRoles={["ADMIN", "CLIENT"]} />}>
         <Route path="/addmovie" element={<AddNewMovie />} />
       </Route>

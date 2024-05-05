@@ -56,6 +56,7 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies }) => {
             genre={movie.genre}
             rating={movie.rating}
             voteCount={movie.voteCount}
+            id={movie.id}
           />
         </div>
       ))}
