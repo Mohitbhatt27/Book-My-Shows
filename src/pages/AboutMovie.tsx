@@ -38,16 +38,15 @@ function AboutMovie() {
     fetchMovie();
   }, [dispatch, id]);
 
-
   function handleNavigateToMovieListing() {
-    navigate(`/movie/listing/${id}`, {state:{movie}});
+    navigate(`/movie/listing/${id}`, { state: { movie } });
   }
 
   return (
     <HomeLayout>
       <div className="  h-[65vw]">
         <div className="flex font-roboto flex-row w-full mx-auto h-[40vw] bg-gradient-to-l from-gray-100 to-gray-900">
-          <div className="flex w-2/3 h-5/6 mt-10 ml-4 mb-2">
+          <div className="flex w-3/5 h-5/6 mt-10 ml-4 mb-2">
             <ReactPlayer
               url={movie?.trailerUrl}
               width="100%"
@@ -56,21 +55,23 @@ function AboutMovie() {
             />
           </div>
 
-          <div className="ml-24 mt-24 flex flex-col gap-5 ">
-            <div className="w-5/6 ">
+          <div className="ml-24 mt-24 flex flex-col gap-5 text-center ">
+            <div className="w-auto ">
               <h2 className="text-[30px] font-semibold ">{movie?.name}</h2>
             </div>
-            <div className="w-5/6 h-[64px] bg-[#333333] hidden lg:flex items-center justify-start mt-3 rounded-md">
-              <p className="text-[16px] text-[#ffffff] flex gap-1 w-[209px] h-[24px]  ml-4">
-                <span className="text-red-500">
-                  <AiFillStar className="inline text-2xl text-red-500 mx-2" />
+            <div className="w-auto h-[64px] bg-[#333333] hidden lg:flex items-center justify-center mt-3 rounded-md">
+              <p className="text-[16px] text-[#ffffff]  flex gap-1 w-[209px] h-[24px]  ml-4">
+                <span className="text-red-500 ">
+                  <AiFillStar className="inline  text-2xl text-red-500 mx-2" />
                 </span>
-                <span>{movie?.rating}/10</span>{" "}
+                <span className="text-[#ffffff] text-center">
+                  {movie?.rating}/10
+                </span>{" "}
                 <span className="ml-2">({movie?.voteCount} Votes)</span>
               </p>
             </div>
 
-            <div className="hidden w-5/6 h-[120px] bg-[#333333] lg:flex flex-col items-center justify-start mt-3 rounded-md text-[16px] gap-2">
+            <div className="hidden w-auto h-[120px] bg-[#333333] lg:flex flex-col items-center justify-start mt-3 rounded-md text-[16px] gap-2">
               <div className="flex text-[#ffffff] text-[16px] items-center justify-between mt-4">
                 {movie?.genre}
               </div>
@@ -83,7 +84,10 @@ function AboutMovie() {
             </div>
 
             <div className="mt-3">
-              <button onClick={handleNavigateToMovieListing} className="btn text-lg bg-[#F84464] border-none font-semibold text-white w-5/6 hover:bg-[#F84464]">
+              <button
+                onClick={handleNavigateToMovieListing}
+                className="btn text-lg bg-[#F84464] border-none font-semibold text-white hover:bg-[#F84464]"
+              >
                 Book Tickets
               </button>
             </div>

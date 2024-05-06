@@ -59,7 +59,7 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies }) => {
     dots: true,
     speed: 300,
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     infinite: true,
     initialSlide: 0,
     nextArrow: <Arrow type="next" />,
