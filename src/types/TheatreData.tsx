@@ -1,5 +1,5 @@
 interface TheatreData {
-  _id?: string;
+  _id: string;
   name: string;
   description?: string;
   city: string;
@@ -7,6 +7,9 @@ interface TheatreData {
   address?: string;
   owner: string;
   movies: string[];
+  createdAt?: string;
+  updatedAt?: string;
+  __v?: number;
 }
 
 export default TheatreData;

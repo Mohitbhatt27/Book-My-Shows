@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import ReactPlayer from "react-player";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import { useAppDispatch } from "../hooks/hooks";
 import HomeLayout from "../layouts/HomeLayout";
@@ -23,6 +23,8 @@ function AboutMovie() {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     async function fetchMovie() {
       try {
@@ -35,6 +37,11 @@ function AboutMovie() {
     }
     fetchMovie();
   }, [dispatch, id]);
+
+
+  function handleNavigateToMovieListing() {
+    navigate(`/movie/listing/${id}`, {state:{movie}});
+  }
 
   return (
     <HomeLayout>
@@ -76,7 +83,7 @@ function AboutMovie() {
             </div>
 
             <div className="mt-3">
-              <button className="btn text-lg bg-[#F84464] border-none font-semibold text-white w-5/6 hover:bg-[#F84464]">
+              <button onClick={handleNavigateToMovieListing} className="btn text-lg bg-[#F84464] border-none font-semibold text-white w-5/6 hover:bg-[#F84464]">
                 Book Tickets
               </button>
             </div>

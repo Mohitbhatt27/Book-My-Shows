@@ -1,5 +1,4 @@
 interface Show {
-  theatreId: string;
   movieId: string;
   timing: string;
   noOfSeats: number;
@@ -9,6 +8,7 @@ interface Show {
   _id?: string;
   createdAt?: string;
   updatedAt?: string;
+  __v?: number;
 }
 
 export default Show;

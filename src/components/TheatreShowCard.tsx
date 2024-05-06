@@ -3,12 +3,32 @@ import { AiOutlineInfoCircle } from "react-icons/ai";
 import ShowTimingCard from "./ShowTimingCard";
 import TheatreNameCard from "./TheatreNameCard";
 
-function TheatreShowCard({ num }: { num: number }) {
+type MovieShows = {
+  id: string; // show id
+  timing: string;
+  format: string;
+  price: number;
+  noOfSeats: number;
+};
+
+function formatTime(timeString: string) {
+  const [hourString, minute] = timeString.split(":");
+  const hour = +hourString % 24;
+  return (hour % 12 || 12) + ":" + minute + (hour < 12 ? "AM" : "PM");
+}
+
+function TheatreShowCard({
+  shows,
+  name,
+}: {
+  shows: MovieShows[];
+  name: string;
+}) {
   return (
     <div className="w-full px-4 pt-4 pb-4">
       <div className="flex justify-start items-start">
         <div className="min-w-[30%] max-w-[45%]">
-          <TheatreNameCard />
+          <TheatreNameCard name={name} />
         </div>
 
         <div className="min-w-[6%] max-w-[10%] font-light ">
@@ -17,11 +37,14 @@ function TheatreShowCard({ num }: { num: number }) {
         </div>
 
         <div className="ml-4 w-auto flex items-center justify-start flex-wrap">
-          {Array(num)
-            .fill(0)
-            .map(() => {
-              return <ShowTimingCard />;
-            })}
+          {shows.map((show) => (
+            <ShowTimingCard
+              format={show.format}
+              price={show.price.toString()}
+              timing={formatTime(new Date(show.timing).toLocaleTimeString())}
+              key={show.id}
+            />
+          ))}
         </div>
       </div>
 

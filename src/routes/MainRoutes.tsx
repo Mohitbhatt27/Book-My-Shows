@@ -16,7 +16,7 @@ function MainRoutes() {
     <Routes>
       <Route path="/" element={<Home />}></Route>
 
-      <Route path="/movie/listing" element={<MovieListings />}></Route>
+      <Route path="/movie/listing/:id" element={<MovieListings />}></Route>
       <Route path="/about/:id" element={<AboutMovie />}></Route>
 
       <Route path="/signup" element={<SignupForm />}></Route>
