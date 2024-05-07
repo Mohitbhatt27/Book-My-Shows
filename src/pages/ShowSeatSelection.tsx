@@ -1,27 +1,15 @@
 import { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { AxiosInstance } from "../config/AxiosInstance";
 import HomeLayout from "../layouts/HomeLayout";
+import { Row, Seat, SelectedSeat } from "../types/ShowSeatSelection";
 import processSeatConfig from "../utils/ProcessSeatConfig";
-
-interface Seat {
-  number: number;
-  status: number;
-}
-
-interface Row {
-  number: string;
-  seats: Seat[];
-}
-
-interface SelectedSeat {
-  rowNumber: string;
-  seatNumber: number;
-}
 
 function SeatingChart() {
   const { state } = useLocation();
+
+  const navigate = useNavigate();
 
   const [seats, setSeats] = useState<Row[]>([
     {
@@ -39,7 +27,7 @@ function SeatingChart() {
     setSeats(processSeatConfig(state.config).rows);
   }, [state.config]);
 
-  function onBooking() {
+  async function onBooking() {
     const selectedSeats: SelectedSeat[] = [];
 
     seats.forEach((row: Row) => {
@@ -56,8 +44,8 @@ function SeatingChart() {
     });
 
     const seatsJson = JSON.stringify(selectedSeats).replace(/"/g, "'");
-    console.log("state,price", typeof state.price);
-    AxiosInstance.post(
+
+    const response = await AxiosInstance.post(
       "/mba/api/v1/bookings",
       {
         seat: seatsJson,
@@ -74,6 +62,17 @@ function SeatingChart() {
         },
       }
     );
+
+    const showId = state.showId;
+
+    if (response.data.success) {
+      navigate("/bookingSummary", {
+        state: {
+          booking: response.data,
+          showId,
+        },
+      });
+    }
   }
 
   function processSeatColor(seat: Seat) {
@@ -118,10 +117,13 @@ function SeatingChart() {
               <div className="flex gap-2 my-2 mx-1">
                 {row.seats.map((seat: Seat, idx: number) => {
                   return seat.status == 0 ? (
-                    <div key={idx} className="h-[2rem] w-[2rem]"></div>
+                    <div
+                      key={`${row.number}-${seat.number}-${idx}`}
+                      className="h-[2rem] w-[2rem]"
+                    ></div>
                   ) : (
                     <div
-                      key={`${row.number}-${seat.number}`}
+                      key={`${row.number}-${seat.number}-${idx}`}
                       onClick={() => {
                         processSeatSelection(`${row.number}-${seat.number}`);
                       }}

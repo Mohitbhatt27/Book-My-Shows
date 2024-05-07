@@ -6,6 +6,7 @@ import AddNewShows from "../pages/AddNewShows";
 import AddNewTheatre from "../pages/AddNewTheatre";
 import SigninForm from "../pages/auth/Signin";
 import SignupForm from "../pages/auth/Signup";
+import BookingSummary from "../pages/BookingSummary";
 import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import MovieListings from "../pages/MovieListings";
@@ -24,6 +25,7 @@ function MainRoutes() {
       <Route path="/signin" element={<SigninForm />}></Route>
 
       <Route path="/about/buyTickets" element={<ShowSeatSelection />}></Route>
+      <Route path="/bookingSummary" element={<BookingSummary />}></Route>
 
       <Route element={<AuthRoutes allowListedRoles={["ADMIN", "CLIENT"]} />}>
         <Route path="/addmovie" element={<AddNewMovie />} />

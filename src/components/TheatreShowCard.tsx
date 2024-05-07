@@ -14,12 +14,6 @@ type MovieShows = {
   movieId: string;
 };
 
-function formatTime(timeString: string) {
-  const [hourString, minute] = timeString.split(":");
-  const hour = +hourString % 24;
-  return (hour % 12 || 12) + ":" + minute + (hour < 12 ? "AM" : "PM");
-}
-
 function TheatreShowCard({
   shows,
   name,
@@ -48,7 +42,7 @@ function TheatreShowCard({
               showId={show.id}
               movieId={show.movieId}
               theatreId={show.theatreId}
-              timing={formatTime(new Date(show.timing).toLocaleTimeString())}
+              timing={new Date(show.timing).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
               key={show.id}
             />
           ))}
