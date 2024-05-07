@@ -11,7 +11,8 @@ type MovieCarouselProps = {
   movies: MoviePosterProps[];
 };
 
-function Arrow(props) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function Arrow(props: { type?: any; className?: any; style?: any; onClick?: any; }) {
   const { className, style, onClick } = props;
   const arrowStyles = {
     backgroundColor: "#999999",
