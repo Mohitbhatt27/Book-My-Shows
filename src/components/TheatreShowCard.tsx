@@ -10,6 +10,8 @@ type MovieShows = {
   price: number;
   noOfSeats: number;
   seatConfiguration: string;
+  theatreId: string;
+  movieId: string;
 };
 
 function formatTime(timeString: string) {
@@ -22,7 +24,7 @@ function TheatreShowCard({
   shows,
   name,
 }: {
-  shows: MovieShows[];
+  shows: [MovieShows];
   name: string;
 }) {
   return (
@@ -43,6 +45,9 @@ function TheatreShowCard({
               config={show.seatConfiguration}
               format={show.format}
               price={show.price.toString()}
+              showId={show.id}
+              movieId={show.movieId}
+              theatreId={show.theatreId}
               timing={formatTime(new Date(show.timing).toLocaleTimeString())}
               key={show.id}
             />

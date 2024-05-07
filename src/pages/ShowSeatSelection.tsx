@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
+import { AxiosInstance } from "../config/AxiosInstance";
 import HomeLayout from "../layouts/HomeLayout";
 import processSeatConfig from "../utils/ProcessSeatConfig";
 
 interface Seat {
-  number?: number;
+  number: number;
   status: number;
 }
 
 interface Row {
   number: string;
   seats: Seat[];
+}
+
+interface SelectedSeat {
+  rowNumber: string;
+  seatNumber: number;
 }
 
 function SeatingChart() {
@@ -33,12 +39,50 @@ function SeatingChart() {
     setSeats(processSeatConfig(state.config).rows);
   }, [state.config]);
 
+  function onBooking() {
+    const selectedSeats: SelectedSeat[] = [];
+
+    seats.forEach((row: Row) => {
+      row.seats.forEach((currentSeat: Seat) => {
+        if (currentSeat.status == 3) {
+          const currentlySelectedSeat: SelectedSeat = {
+            rowNumber: row.number,
+            seatNumber: currentSeat.number,
+          };
+
+          selectedSeats.push(currentlySelectedSeat);
+        }
+      });
+    });
+
+    const seatsJson = JSON.stringify(selectedSeats).replace(/"/g, "'");
+    console.log("state,price", typeof state.price);
+    AxiosInstance.post(
+      "/mba/api/v1/bookings",
+      {
+        seat: seatsJson,
+        movieId: state.movieId,
+        theatreId: state.theatreId,
+        noOfSeats: selectedSeats.length,
+        timing: state.timing,
+        price: state.price,
+        showId: state.showId,
+      },
+      {
+        headers: {
+          "x-access-token": localStorage.getItem("token"),
+        },
+      }
+    );
+  }
+
   function processSeatColor(seat: Seat) {
-    if (seat.status == 0) return "";
+    if (seat.status == 0) return ""; // blocked
     else if (seat.status == 1)
-      return "border border-green-300 hover:bg-[#1ea83c]";
-    else if (seat.status == 3) return "border border-yellow-300 bg-yellow-300";
-    else return "border border-gray-400 bg-gray-300";
+      return "border border-green-300 hover:bg-[#1ea83c]"; // avaliable
+    else if (seat.status == 3)
+      return "border border-yellow-300 bg-[#1ea83c]"; // selected
+    else return "border border-gray-400 bg-gray-300"; // reserved
   }
 
   function processSeatSelection(seatId: string) {
@@ -62,10 +106,9 @@ function SeatingChart() {
 
   return (
     <HomeLayout>
-      
-    <div className="bg-gray-200 h-12 w-[50%] m-4 flex  mx-auto items-center justify-center text-center transform rotateX-45 shadow-custom">
-      <p className="text-2xl bold">SCREEN THIS WAY</p>
-    </div>
+      <div className="bg-gray-200 h-12 w-[50%] m-4 flex  mx-auto items-center justify-center text-center transform rotateX-45 shadow-custom">
+        <p className="text-2xl bold">SCREEN THIS WAY</p>
+      </div>
       <div className="flex flex-col items-center justify-center p-16">
         {seats.map((row: Row) => {
           return (
@@ -73,8 +116,7 @@ function SeatingChart() {
               <div>{row.number}</div>
 
               <div className="flex gap-2 my-2 mx-1">
-                {row.seats.map((seat: Seat, idx:number) => {
-                  
+                {row.seats.map((seat: Seat, idx: number) => {
                   return seat.status == 0 ? (
                     <div key={idx} className="h-[2rem] w-[2rem]"></div>
                   ) : (
@@ -83,7 +125,7 @@ function SeatingChart() {
                       onClick={() => {
                         processSeatSelection(`${row.number}-${seat.number}`);
                       }}
-                      className={ `${processSeatColor(
+                      className={`${processSeatColor(
                         seat
                       )} px-2 py-1 h-[2rem] w-[2rem] hover:cursor-pointer`}
                     >
@@ -95,12 +137,17 @@ function SeatingChart() {
             </div>
           );
         })}
+        <div className="flex flex-col items-center justify-center">
+          <button
+            onClick={onBooking}
+            className="bg-red-500 px-4 py-2 text-white font-semibold hover:cursor-pointer hover:bg-red-400 mt-4 rounded-md"
+          >
+            Create Booking
+          </button>
+        </div>
       </div>
     </HomeLayout>
   );
 }
 
 export default SeatingChart;
-
-
-

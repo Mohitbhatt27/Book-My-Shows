@@ -12,12 +12,14 @@ interface MovieShow {
   price: number;
   noOfSeats: number;
   seatConfiguration: string;
+  theatreId: string;
+  movieId: string;
 }
 
 interface TheatreShowData {
   theatreName: string;
   id: string; //theatre id
-  shows: MovieShow[];
+  shows: [MovieShow];
 }
 interface TheatreState {
   [key: string]: TheatreShowData;
@@ -70,7 +72,11 @@ function MovieListings() {
             price: show.price,
             noOfSeats: show.noOfSeats,
             format: show.format,
-            seatConfiguration: show.seatConfiguration?show.seatConfiguration:"",
+            seatConfiguration: show.seatConfiguration
+              ? show.seatConfiguration
+              : "",
+            movieId: show.movieId,
+            theatreId: show.theatreId._id,
           });
         } else {
           showInATheatre[show.theatreId._id] = {
@@ -83,7 +89,11 @@ function MovieListings() {
                 price: show.price,
                 noOfSeats: show.noOfSeats,
                 format: show.format,
-                seatConfiguration: show.seatConfiguration?show.seatConfiguration:"",
+                seatConfiguration: show.seatConfiguration
+                  ? show.seatConfiguration
+                  : "",
+                movieId: show.movieId,
+                theatreId: show.theatreId._id,
               },
             ],
           };

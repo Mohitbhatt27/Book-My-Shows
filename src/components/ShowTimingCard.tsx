@@ -1,27 +1,31 @@
 import { useNavigate } from "react-router-dom";
 
-
 function ShowTimingcard({
   config,
   format,
   price,
   timing,
+  showId,
+  theatreId,
+  movieId,
 }: {
   format: string;
   price: string;
   timing: string;
   config: string;
+  showId: string;
+  theatreId: string;
+  movieId: string;
 }) {
   const navigate = useNavigate();
 
   function handleOnShowTimingCardClick() {
     if (config) {
-      navigate("/about/buyTickets", {state: {config: config}});
+      navigate("/about/buyTickets", {
+        state: { config, timing, price, movieId, theatreId, showId },
+      });
     }
   }
-
-  // const seatConfiguration = processSeatConfig(config);
-  // console.log("seatConfiguration", seatConfiguration);
 
   return (
     <div
