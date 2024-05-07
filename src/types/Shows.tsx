@@ -2,7 +2,7 @@ interface Show {
   movieId: string;
   timing: string;
   noOfSeats: number;
-  seatConfiguration: string;
+  seatConfiguration?: string;
   price: number;
   format: string;
   _id?: string;

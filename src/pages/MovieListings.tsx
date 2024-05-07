@@ -11,6 +11,7 @@ interface MovieShow {
   format: string;
   price: number;
   noOfSeats: number;
+  seatConfiguration: string;
 }
 
 interface TheatreShowData {
@@ -33,6 +34,7 @@ interface show {
   _v: number;
   _id: string;
   theatreId: theatre;
+  seatConfiguration: string;
 }
 
 interface theatre {
@@ -68,6 +70,7 @@ function MovieListings() {
             price: show.price,
             noOfSeats: show.noOfSeats,
             format: show.format,
+            seatConfiguration: show.seatConfiguration?show.seatConfiguration:"",
           });
         } else {
           showInATheatre[show.theatreId._id] = {
@@ -80,6 +83,7 @@ function MovieListings() {
                 price: show.price,
                 noOfSeats: show.noOfSeats,
                 format: show.format,
+                seatConfiguration: show.seatConfiguration?show.seatConfiguration:"",
               },
             ],
           };

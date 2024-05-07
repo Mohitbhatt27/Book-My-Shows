@@ -13,7 +13,7 @@ function AddNewShows() {
     timing: "",
     noOfSeats: 10,
     price: 50,
-    seatConfiguration: "Standard",
+    // seatConfiguration: "Standard",
     format: "2D",
   });
 
@@ -129,7 +129,7 @@ function AddNewShows() {
           </div>
 
           {/* Seat type */}
-          <div>
+          {/* <div>
             <label className="block text-sm font-bold">Seat Type</label>
             <select
               value={showDetails.seatConfiguration}
@@ -145,7 +145,7 @@ function AddNewShows() {
               <option value="VIP">VIP</option>
               <option value="Premium">Premium</option>
             </select>
-          </div>
+          </div> */}
 
           {/* Show format */}
           <div>

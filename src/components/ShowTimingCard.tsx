@@ -1,4 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
+
 function ShowTimingcard({
+  config,
   format,
   price,
   timing,
@@ -6,9 +10,26 @@ function ShowTimingcard({
   format: string;
   price: string;
   timing: string;
+  config: string;
 }) {
+  const navigate = useNavigate();
+
+  function handleOnShowTimingCardClick() {
+    if (config) {
+      navigate("/about/buyTickets", {state: {config: config}});
+    }
+  }
+
+  // const seatConfiguration = processSeatConfig(config);
+  // console.log("seatConfiguration", seatConfiguration);
+
   return (
-    <div className="group relative w-32 py-1 px-2 flex flex-col items-center justify-center text-[12px] text-[#4abd5d] rounded-md border border-[#9A9A9A] font-roboto mx-2 my-2">
+    <div
+      onClick={handleOnShowTimingCardClick}
+      className={`group relative w-32 py-1 px-2 flex flex-col items-center justify-center text-[12px] text-[#4abd5d] rounded-md border border-[#9A9A9A] font-roboto mx-2 my-2 ${
+        config ? "hover:cursor-pointer" : ""
+      }`}
+    >
       <div>{timing}</div>
 
       <div className="text-[12px]">{format}</div>

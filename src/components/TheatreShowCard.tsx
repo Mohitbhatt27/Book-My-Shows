@@ -9,6 +9,7 @@ type MovieShows = {
   format: string;
   price: number;
   noOfSeats: number;
+  seatConfiguration: string;
 };
 
 function formatTime(timeString: string) {
@@ -39,6 +40,7 @@ function TheatreShowCard({
         <div className="ml-4 w-auto flex items-center justify-start flex-wrap">
           {shows.map((show) => (
             <ShowTimingCard
+              config={show.seatConfiguration}
               format={show.format}
               price={show.price.toString()}
               timing={formatTime(new Date(show.timing).toLocaleTimeString())}

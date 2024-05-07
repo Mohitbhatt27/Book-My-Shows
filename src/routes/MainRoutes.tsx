@@ -9,6 +9,7 @@ import SignupForm from "../pages/auth/Signup";
 import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home";
 import MovieListings from "../pages/MovieListings";
+import ShowSeatSelection from "../pages/ShowSeatSelection";
 import AuthRoutes from "./AuthRoutes";
 
 function MainRoutes() {
@@ -21,6 +22,8 @@ function MainRoutes() {
 
       <Route path="/signup" element={<SignupForm />}></Route>
       <Route path="/signin" element={<SigninForm />}></Route>
+
+      <Route path="/about/buyTickets" element={<ShowSeatSelection />}></Route>
 
       <Route element={<AuthRoutes allowListedRoles={["ADMIN", "CLIENT"]} />}>
         <Route path="/addmovie" element={<AddNewMovie />} />
