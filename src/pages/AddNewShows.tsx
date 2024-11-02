@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import HomeLayout from "../layouts/HomeLayout";
@@ -18,12 +19,13 @@ function AddNewShows() {
   });
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
     const data = showDetails;
     dispatch(addNewShow(data));
+    navigate("/");
   };
 
   const movieList = useAppSelector((state) => state.movies.movieList);

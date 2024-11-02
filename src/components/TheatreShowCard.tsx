@@ -33,7 +33,7 @@ function TheatreShowCard({
           <span className="text-[10px] text-[#7d7d7d]">INFO</span>
         </div>
 
-        <div className="ml-4 w-auto flex items-center justify-start flex-wrap">
+        <div className="ml-4 w-auto flex items-center justify-start flex-wrap cursor-pointer">
           {shows.map((show) => (
             <ShowTimingCard
               config={show.seatConfiguration}
@@ -42,7 +42,10 @@ function TheatreShowCard({
               showId={show.id}
               movieId={show.movieId}
               theatreId={show.theatreId}
-              timing={new Date(show.timing).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+              timing={new Date(show.timing).toLocaleTimeString([], {
+                hour: "2-digit",
+                minute: "2-digit",
+              })}
               key={show.id}
             />
           ))}

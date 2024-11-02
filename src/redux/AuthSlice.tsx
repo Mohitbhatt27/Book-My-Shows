@@ -26,7 +26,6 @@ export const signinSlice = createAsyncThunk(
         "/mba/api/v1/auth/signin",
         data
       );
-      console.log("Signing in with response", response);
       return response;
     } catch (error) {
       console.log("error while signin", error);
@@ -47,7 +46,7 @@ export const signupSlice = createAsyncThunk(
         "/mba/api/v1/auth/signup",
         data
       );
-      console.log("Sign up with response", response);
+
       return response;
     } catch (error) {
       console.log("error while signup", error);

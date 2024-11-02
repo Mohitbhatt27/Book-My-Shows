@@ -5,7 +5,6 @@ import { useAppDispatch } from "../../hooks/hooks";
 import HomeLayout from "../../layouts/HomeLayout";
 import { signupSlice } from "../../redux/AuthSlice";
 
-
 const SignupForm: React.FC = () => {
   const [signupDetails, setSignupDetails] = useState({
     name: "",
@@ -25,22 +24,6 @@ const SignupForm: React.FC = () => {
       console.log(error);
     }
   }
-
-  // const [name, setName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [userType, setUserType] = useState("customer");
-
-  // const navigate = useNavigate();
-
-  // const handleSubmit = (e: React.FormEvent) => {
-  //   e.preventDefault();
-  //   onSubmit({ name, email, password, userType });
-  //   setName("");
-  //   setEmail("");
-  //   setPassword("");
-  //   setUserType("customer"); // Reset to default
-  // };
 
   return (
     <HomeLayout>

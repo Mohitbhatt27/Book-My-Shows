@@ -11,10 +11,10 @@ const SigninForm: React.FC = () => {
     password: "",
   });
 
-  const dispatch = useAppDispatch(); 
-  const navigate = useNavigate(); 
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
-  function handleSubmit (e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     dispatch(signinSlice(signinDetails));
     navigate("/");

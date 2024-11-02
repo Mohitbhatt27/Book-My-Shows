@@ -19,14 +19,12 @@ function AddNewTheatre() {
   const dispatch = useAppDispatch();
 
   const movieList = useAppSelector((state) => state.movies.movieList);
-  console.log("movieList", movieList);
 
   useEffect(() => {
     dispatch(getAllMovies());
   }, [dispatch]);
 
   const onSubmit = (data: TheatreDataTypes) => {
-    console.log("Form Submitted", data);
     setSubmitStatus("Theatre submitted successfully!");
     dispatch(addNewTheatre(data));
   };
