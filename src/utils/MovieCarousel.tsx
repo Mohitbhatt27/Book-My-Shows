@@ -12,11 +12,16 @@ type MovieCarouselProps = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function Arrow(props: { type?: any; className?: any; style?: any; onClick?: any; }) {
+function Arrow(props: {
+  type?: any;
+  className?: any;
+  style?: any;
+  onClick?: any;
+}) {
   const { className, style, onClick } = props;
   const arrowStyles = {
     backgroundColor: "#999999",
-    height: "40px",
+    height: "42px",
     width: "40px",
     display: "flex",
     alignItems: "center",
