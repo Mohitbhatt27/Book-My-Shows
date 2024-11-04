@@ -124,9 +124,15 @@ function SeatingChart() {
                   ) : (
                     <div
                       key={`${row.number}-${seat.number}-${idx}`}
-                      onClick={() => {
-                        processSeatSelection(`${row.number}-${seat.number}`);
-                      }}
+                      onClick={
+                        seat.status === 2
+                          ? null
+                          : () => {
+                              processSeatSelection(
+                                `${row.number}-${seat.number}`
+                              );
+                            }
+                      }
                       className={`${processSeatColor(
                         seat
                       )} px-2 py-1 h-[2rem] w-[2rem] hover:cursor-pointer`}
