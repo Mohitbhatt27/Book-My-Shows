@@ -37,8 +37,8 @@ function Home() {
   return (
     <HomeLayout>
       <HomePageCarousel />
-      <div className="flex flex-col w-[90vw] mx-auto lg:w-[80vw]">
-        <p className=" text-[24px] font-roboto antialiased font-bold mt-5 mb-4 leading-[28.08px] sm:text-[28px] md:text-[32px] lg:text-[36px]">
+      <div className="flex flex-col w-[90vw] mx-auto">
+        <p className=" text-[24px] font-roboto antialiased font-bold mt-5 mb-4 leading-[28.08px]">
           Recommended Movies
         </p>
 

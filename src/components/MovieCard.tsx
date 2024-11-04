@@ -25,19 +25,19 @@ function MovieCard({
 
   return (
     <div
-      className=" flex flex-col items-center justify-between h-[450px] w-[250px] hover:cursor-pointer my-4 rounded-lg sm:h-[350px] sm:w-[180px] md:h-[400px] md:w-[200px] lg:h-[416px] lg:w-[222px]"
+      className=" flex flex-col items-center justify-center h-[416px] w-[222px] mb-4 hover:cursor-pointer"
       onClick={handleOnClick}
     >
       <img
         src={movieImage}
-        className="h-[250px] w-full rounded-tl-lg rounded-tr-lg object-cover"
+        className="h-[95%] w-full rounded-tl-lg rounded-tr-lg"
       />
-      <div className="bg-black w-full text-white text-left rounded-br-lg rounded-bl-lg py-1 sm:py-[2px] md:py-[4px] flex items-center justify-between px-2">
+      <div className="bg-black w-full text-white text-left rounded-br-lg rounded-bl-lg py-1">
         <AiFillStar className="inline text-2xl text-red-500" />
         <span className="text-sm sm:text-xs md:text-sm">{rating}/10</span>
         <span className="text-sm sm:text-xs md:text-sm">{voteCount} Votes</span>
       </div>
-      <div className="flex flex-col justify-start items-start w-full mt-2 px-2">
+      <div className="flex justify-start items-start w-full mt-2 flex-col">
         <p className="text-[#222222] text-left font-roboto text-[18px] leading-[23.94px] font-medium sm:text-[16px] md:text-[18px]">
           {name}
         </p>

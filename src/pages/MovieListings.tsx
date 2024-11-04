@@ -14,7 +14,7 @@ function MovieListings() {
   async function fetchShowsForMovie() {
     try {
       const response = await AxiosInstance.get(
-        `mba/api/v1/shows?movieId=${state?.movie._id}`
+        `/mba/api/v1/shows?movieId=${state?.movie._id}`
       );
       const shows: show[] = response.data.data;
       const showInATheatre: TheatreState = {};
@@ -64,7 +64,7 @@ function MovieListings() {
   useEffect(() => {
     if (!state || !state.movie.name) navigate("/");
     fetchShowsForMovie();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
