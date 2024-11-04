@@ -40,7 +40,7 @@ function Navbar() {
           </div>
         </div>
         <div className="flex-none gap-2 mr-8 font-roboto h-8">
-          {!isSignedIn ? (
+          {!isSignedIn && (
             <div>
               <button
                 className="btn bg-[#F84464] border-none font-semibold text-white w-24 hover:bg-[#F84464]"
@@ -49,7 +49,8 @@ function Navbar() {
                 Sign In
               </button>
             </div>
-          ) : (
+          )}
+          {isSignedIn && (
             <div>
               <button
                 className="btn bg-[#F84464] border-none font-semibold text-white w-24 hover:bg-[#F84464]"

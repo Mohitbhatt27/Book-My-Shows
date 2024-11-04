@@ -73,7 +73,16 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies }) => {
 
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1400, // Large desktops
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 1024, // Desktops
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -82,7 +91,7 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies }) => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 768, // Tablets
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -90,31 +99,51 @@ const MovieCarousel: React.FC<MovieCarouselProps> = ({ movies }) => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 600, // Small tablets and large mobiles
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480, // Mobiles
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true, // Add this option to center the cards
+          centerPadding: "20px", // Add this option to add some padding to the center
+        },
+      },
+      {
+        breakpoint: 320, // Small mobiles
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          centerMode: true, // Add this option to center the cards
+          centerPadding: "20px", // Add this option to add some padding to the center
         },
       },
     ],
   };
 
   return (
-    <div className="slider-container">
-      <Slider {...settings}>
-        {movies.map((movie, index) => (
-          <div key={index}>
-            <MovieCard
-              movieImage={movie.poster}
-              name={movie.name}
-              genre={movie.genre}
-              rating={movie.rating}
-              voteCount={movie.voteCount}
-              id={movie.id}
-            />
-          </div>
-        ))}
-      </Slider>
+    <div className="">
+      <div className="slider-container">
+        <Slider {...settings}>
+          {movies.map((movie) => (
+            <div key={movie.id} className="flex justify-center items-center">
+              <MovieCard
+                movieImage={movie.poster}
+                name={movie.name}
+                genre={movie.genre}
+                rating={movie.rating}
+                voteCount={movie.voteCount}
+                id={movie.id}
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 };
